@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import {
   FaShieldAlt,
   FaTrophy,
@@ -11,15 +12,15 @@ import {
   FaCogs
 } from 'react-icons/fa';
 import heroImage from '../assets/hero-bg.jpg';
-import prod1 from '../assets/product1.jpg';
-import prod2 from '../assets/product2.jpg';
-import prod3 from '../assets/product3.jpg';
+import CarouselComponent from '../components/CarouselComponent';
+import { AnimatedSection, AnimatedCard, fadeInUp, staggerContainer, cardHover, buttonHover } from '../components/AnimatedComponents';
 
 function Home() {
   const navigate = useNavigate();
 
   return (
     <>
+    
       {/* 1. Hero Section */}
       <section
         className="position-relative d-flex align-items-center text-white py-5"
@@ -64,16 +65,30 @@ function Home() {
       </section>
 
       {/* 2. Overview & Ethos */}
-      <section className="py-5">
+      <AnimatedSection className="py-5">
         <Container>
           <Row className="justify-content-center text-center mb-5">
             <Col lg={8}>
-              <h2 className="fw-bold text-secondary-custom mb-3">Who We Are</h2>
-              <p className="text-muted fs-5">
+              <motion.h2 
+                className="fw-bold text-secondary-custom mb-3"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                Who We Are
+              </motion.h2>
+              <motion.p 
+                className="text-muted fs-5"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
                 Since 2015, we have been delivering top-tier services to our community.
                 Our ethos is built on a foundation of integrity and hard work. We believe
                 in transparent communication and exceeding expectations.
-              </p>
+              </motion.p>
             </Col>
           </Row>
 
@@ -83,86 +98,160 @@ function Home() {
               { icon: FaTrophy, title: "Quality Matters", desc: "We adhere to strict quality control standards on every project." },
               { icon: FaClock, title: "On-Time Reliability", desc: "We respect your time and deliver projects within the agreed timeline." }
             ].map((value, index) => (
-              <Col key={index} md={4} className="text-center">
-                <div
-                  className="p-4 rounded shadow-sm"
-                  style={{ backgroundColor: '#f8f9fa', minHeight: '250px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
+              <Col key={index} md={4}>
+                <motion.div
+                  className="p-4 rounded shadow-sm h-100 text-center"
+                  style={{ backgroundColor: '#f8f9fa' }}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.15 }}
+                  whileHover={{ scale: 1.03, y: -5 }}
                 >
-                  <div className="mb-3 text-primary-custom" style={{ fontSize: '3rem' }}>
+                  <motion.div 
+                    className="mb-3 text-primary-custom mx-auto" 
+                    style={{ fontSize: '3rem', width: 'fit-content' }}
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                  >
                     <value.icon />
-                  </div>
+                  </motion.div>
                   <h4 className="fw-bold text-secondary-custom">{value.title}</h4>
-                  <p className="text-muted">{value.desc}</p>
-                </div>
+                  <p className="text-muted mb-0">{value.desc}</p>
+                </motion.div>
               </Col>
             ))}
           </Row>
         </Container>
-      </section>
+      </AnimatedSection>
 
       {/* 3. Policies Summary */}
-      <section className="py-5 bg-light">
+      <AnimatedSection className="py-5 bg-light">
         <Container>
           <Row className="justify-content-center mb-5">
             <Col lg={8} className="text-center">
-              <h2 className="fw-bold text-secondary-custom">Our Commitment</h2>
-              <p className="text-muted">Established policies to guide our operations and ensure customer satisfaction.</p>
+              <motion.h2 
+                className="fw-bold text-secondary-custom"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                Our Commitment
+              </motion.h2>
+              <motion.p 
+                className="text-muted"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                Established policies to guide our operations and ensure customer satisfaction.
+              </motion.p>
             </Col>
           </Row>
 
           <Row className="g-4">
             <Col md={6}>
-              <Card className="h-100 border-0 shadow-sm hover-shadow">
-                <Card.Body className="d-flex flex-column">
-                  <div className="mb-3 text-primary-custom fs-1">
-                    <FaTrophy />
-                  </div>
-                  <Card.Title className="fw-bold text-secondary-custom">Quality Policy</Card.Title>
-                  <Card.Text className="flex-grow-1">
-                    We are dedicated to providing products and services that consistently meet or exceed customer requirements and applicable regulatory standards.
-                  </Card.Text>
-                  <Button
-                    variant="outline-primary"
-                    className="align-self-start"
-                    style={{ borderColor: 'var(--primary-color)', color: 'var(--primary-color)' }}
-                  >
-                    Read Full Policy
-                  </Button>
-                </Card.Body>
-              </Card>
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <Card className="h-100 border-0 shadow-sm hover-shadow">
+                  <Card.Body className="d-flex flex-column">
+                    <motion.div 
+                      className="mb-3 text-primary-custom fs-1"
+                      whileHover={{ scale: 1.2, rotate: 10 }}
+                      transition={{ type: "spring", stiffness: 400 }}
+                    >
+                      <FaTrophy />
+                    </motion.div>
+                    <Card.Title className="fw-bold text-secondary-custom">Quality Policy</Card.Title>
+                    <Card.Text className="flex-grow-1">
+                      We are dedicated to providing products and services that consistently meet or exceed customer requirements and applicable regulatory standards.
+                    </Card.Text>
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Button
+                        variant="outline-primary"
+                        className="align-self-start"
+                        style={{ borderColor: 'var(--primary-color)', color: 'var(--primary-color)' }}
+                      >
+                        Read Full Policy
+                      </Button>
+                    </motion.div>
+                  </Card.Body>
+                </Card>
+              </motion.div>
             </Col>
 
             <Col md={6}>
-              <Card className="h-100 border-0 shadow-sm hover-shadow">
-                <Card.Body className="d-flex flex-column">
-                  <div className="mb-3 text-primary-custom fs-1">
-                    <FaShieldAlt />
-                  </div>
-                  <Card.Title className="fw-bold text-secondary-custom">Safety Policy</Card.Title>
-                  <Card.Text className="flex-grow-1">
-                    We maintain a safe workplace for employees, visitors, and contractors, and we comply with all relevant health and safety regulations.
-                  </Card.Text>
-                  <Button
-                    variant="outline-primary"
-                    className="align-self-start"
-                    style={{ borderColor: 'var(--primary-color)', color: 'var(--primary-color)' }}
-                  >
-                    Safety Guidelines
-                  </Button>
-                </Card.Body>
-              </Card>
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <Card className="h-100 border-0 shadow-sm hover-shadow">
+                  <Card.Body className="d-flex flex-column">
+                    <motion.div 
+                      className="mb-3 text-primary-custom fs-1"
+                      whileHover={{ scale: 1.2, rotate: -10 }}
+                      transition={{ type: "spring", stiffness: 400 }}
+                    >
+                      <FaShieldAlt />
+                    </motion.div>
+                    <Card.Title className="fw-bold text-secondary-custom">Safety Policy</Card.Title>
+                    <Card.Text className="flex-grow-1">
+                      We maintain a safe workplace for employees, visitors, and contractors, and we comply with all relevant health and safety regulations.
+                    </Card.Text>
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Button
+                        variant="outline-primary"
+                        className="align-self-start"
+                        style={{ borderColor: 'var(--primary-color)', color: 'var(--primary-color)' }}
+                      >
+                        Safety Guidelines
+                      </Button>
+                    </motion.div>
+                  </Card.Body>
+                </Card>
+              </motion.div>
             </Col>
           </Row>
         </Container>
-      </section>
+      </AnimatedSection>
 
       {/* 4. Services Preview */}
-      <section className="py-5">
+      <AnimatedSection className="py-5">
         <Container>
           <Row className="justify-content-center text-center mb-5">
             <Col lg={8}>
-              <h2 className="fw-bold text-secondary-custom">Our Core Services</h2>
-              <p className="text-muted">Comprehensive solutions designed to meet your specific business needs.</p>
+              <motion.h2 
+                className="fw-bold text-secondary-custom"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                Our Core Services
+              </motion.h2>
+              <motion.p 
+                className="text-muted"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                Comprehensive solutions designed to meet your specific business needs.
+              </motion.p>
             </Col>
           </Row>
 
@@ -174,68 +263,38 @@ function Home() {
               { icon: FaCogs, title: "Maintenance", desc: "Reliable ongoing support and repair services for all infrastructure." }
             ].map((service, index) => (
               <Col md={6} lg={3} key={index}>
-                <div className="p-4 text-center h-100 rounded bg-white shadow-sm border-top border-primary-custom" style={{ borderTopWidth: '5px' }}>
-                  <div className="mb-3 text-primary-custom fs-2 mx-auto" style={{ width: '60px' }}>
+                <motion.div 
+                  className="p-4 text-center h-100 rounded bg-white shadow-sm border-top"
+                  style={{ borderTopWidth: '5px', borderColor: 'var(--primary-color)' }}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ 
+                    scale: 1.05, 
+                    y: -10,
+                    boxShadow: "0 1rem 2rem rgba(0,0,0,0.15)"
+                  }}
+                >
+                  <motion.div 
+                    className="mb-3 text-primary-custom mx-auto" 
+                    style={{ fontSize: '2rem', width: 'fit-content' }}
+                    whileHover={{ scale: 1.2, rotate: 360 }}
+                    transition={{ duration: 0.5 }}
+                  >
                     <service.icon />
-                  </div>
+                  </motion.div>
                   <h5 className="fw-bold text-secondary-custom">{service.title}</h5>
-                  <p className="text-muted">{service.desc}</p>
-                </div>
+                  <p className="text-muted mb-0">{service.desc}</p>
+                </motion.div>
               </Col>
             ))}
           </Row>
         </Container>
-      </section>
+      </AnimatedSection>
 
-      {/* 5. Featured Products */}
-      <section className="py-5 bg-light">
-        <Container>
-          <Row className="justify-content-center text-center mb-5">
-            <Col lg={8}>
-              <h2 className="fw-bold text-secondary-custom">Featured Products</h2>
-            </Col>
-          </Row>
-
-          <Row className="g-4">
-            {[
-              { img: prod1, title: "Premium Tool Kit", price: "$149.99" },
-              { img: prod2, title: "Safety Gear Bundle", price: "$89.50" },
-              { img: prod3, title: "Pro Design Plans", price: "$49.00" }
-            ].map((product, index) => (
-              <Col md={4} key={index}>
-                <Card className="h-100 border-0 shadow-lg overflow-hidden">
-                  <div className="position-relative">
-                    <Card.Img
-                      variant="top"
-                      src={product.img}
-                      alt={product.title}
-                      style={{ height: '200px', objectFit: 'cover' }}
-                    />
-                    <div className="position-absolute top-0 start-0 w-100 h-100"
-                      style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}></div>
-                  </div>
-                  <Card.Body className="d-flex flex-column">
-                    <Card.Title className="fw-bold text-secondary-custom">{product.title}</Card.Title>
-                    <Card.Text className="flex-grow-1 text-muted">
-                      High-grade materials ensuring durability and performance in all conditions.
-                    </Card.Text>
-                    <div className="d-flex justify-content-between align-items-center mt-auto">
-                      <span className="fw-bold fs-4 text-primary-custom">{product.price}</span>
-                      <Button
-                        variant="primary"
-                        size="sm"
-                        style={{ backgroundColor: 'var(--primary-color)', borderColor: 'var(--primary-color)' }}
-                      >
-                        View Details
-                      </Button>
-                    </div>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </section>
+      {/* 5. Featured Products Carousel */}
+      <CarouselComponent />
     </>
   );
 }

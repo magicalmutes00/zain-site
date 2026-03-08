@@ -77,7 +77,7 @@ function Contact() {
               className="fw-bold shadow-sm"
               onClick={() => setShowHotlineModal(true)}
             >
-              Call Now: (555) 123-4567
+              Call Now: +968 - 92144367
             </Button>
           </div>
         </Container>
@@ -112,7 +112,7 @@ function Contact() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="John Doe"
+                      placeholder="Decoders Inc."
                       isInvalid={!!errors.name}
                       className="shadow-sm"
                     />
@@ -126,7 +126,7 @@ function Contact() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="john@example.com"
+                      placeholder="decoders@example.com"
                       isInvalid={!!errors.email}
                       className="shadow-sm"
                     />
@@ -196,11 +196,11 @@ function Contact() {
                   <h5 className="fw-bold text-secondary-custom mb-2">Phone</h5>
                   <p className="mb-0 text-muted">Main Line:</p>
                   <a href="tel:5551234567" className="text-decoration-none fw-bold text-primary-custom">
-                    (555) 123-4567
+                    +968 - 92144367
                   </a>
                   <br />
                   <a href="tel:5559876543" className="text-decoration-none text-muted small">
-                    (555) 987-6543
+                    +968 -71744429
                   </a>
                 </Card>
               </Col>
@@ -212,11 +212,12 @@ function Contact() {
                   </div>
                   <h5 className="fw-bold text-secondary-custom mb-2">Email</h5>
                   <a href="mailto:contact@myapp.com" className="text-decoration-none text-muted">
-                    contact@myapp.com
+                    info@zaintechoman.com
                   </a>
                   <br />
                   <a href="mailto:support@myapp.com" className="text-decoration-none text-muted small">
-                    support@myapp.com
+                    zainprojectsoman@gmail.com
+                    zaintechnicaloman@gmail.com
                   </a>
                 </Card>
               </Col>
@@ -228,9 +229,9 @@ function Contact() {
                   </div>
                   <h5 className="fw-bold text-secondary-custom mb-2">Address</h5>
                   <p className="mb-0 text-muted">
-                    123 Business Avenue,<br />
-                    Suite 400<br />
-                    Tech City, TC 90210
+                    Barka,,South Al Batinah,<br />
+                    Sultanate of Oman (near ROP Barka)<br />
+                    PO Box NO : 124,Postal Code : 122.
                   </p>
                   <Button variant="outline-primary" size="sm" className="mt-2 rounded-pill" onClick={() => window.open('https://maps.google.com', '_blank')}>
                     Get Directions
