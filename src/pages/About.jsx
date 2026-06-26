@@ -1,330 +1,396 @@
 import React from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { motion } from 'framer-motion';
-import { FaUser } from 'react-icons/fa';
-import teamMember1 from '../assets/team1.jpg';
-import teamMember2 from '../assets/team2.jpg';
-import teamMember3 from '../assets/team3.jpg';
-import work1 from '../assets/work1.jpg';
-import work2 from '../assets/work2.jpg';
-import work3 from '../assets/work3.jpg';
+import { FiUser, FiCheckCircle, FiArrowRight, FiBriefcase, FiAward, FiTarget, FiLayers } from 'react-icons/fi';
 
-// Animation variants
-const fadeInUp = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-};
+const team = [
+  { name: 'John Smith', role: 'Founder & CEO', experience: 'Visionary leader with 20+ years in the industry' },
+  { name: 'Sarah Johnson', role: 'Project Manager', experience: 'Expert project coordinator with proven track record' },
+  { name: 'Michael Chen', role: 'Lead Engineer', experience: 'Technical innovator leading our engineering team' },
+  { name: 'Emily Davis', role: 'Customer Success', experience: 'Dedicated to ensuring every client is satisfied' },
+];
 
-const fadeInLeft = {
-  hidden: { opacity: 0, x: -50 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
-};
+const milestones = [
+  { year: '1998', title: 'Company Founded', desc: 'Started with a vision to transform the industry' },
+  { year: '2005', title: 'Regional Expansion', desc: 'Expanded operations across multiple regions' },
+  { year: '2012', title: '500 Projects', desc: 'Celebrated milestone of completing 500 successful projects' },
+  { year: '2018', title: 'Certification Achieved', desc: 'Obtained ISO 9001 and Safety certifications' },
+];
 
-const staggerContainer = {
+const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.1 }
-  }
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
 };
 
-function About() {
-    return (
-        <div>
-            {/* Company History Section */}
-            <section className="py-5 bg-white">
-                <Container>
-                    <Row className="align-items-center g-4">
-                        <Col lg={6} className="order-2 order-lg-1">
-                            <motion.div
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true, amount: 0.3 }}
-                                variants={fadeInLeft}
-                            >
-                                <div className="mb-4">
-                                    <motion.h2 
-                                        className="fw-bold text-secondary-custom display-6"
-                                        initial={{ opacity: 0, x: -30 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.6 }}
-                                    >
-                                        Our Journey Since 1998
-                                    </motion.h2>
-                                    <motion.div 
-                                        className="w-25 bg-primary-custom h-1 rounded mb-4"
-                                        initial={{ width: 0 }}
-                                        whileInView={{ width: '25%' }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.8, delay: 0.3 }}
-                                    />
-                                </div>
-                                <motion.p 
-                                    className="lead text-muted mb-4"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.6, delay: 0.2 }}
-                                >
-                                    Founded in a small garage with two tools and a dream, our company has grown into a trusted name in the industry.
-                                    We started by focusing on residential repairs and quickly expanded our expertise to commercial projects.
-                                </motion.p>
-                                <motion.p 
-                                    className="text-muted"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.6, delay: 0.3 }}
-                                >
-                                    Our commitment to quality, safety, and customer satisfaction has allowed us to serve over 1,500 happy clients
-                                    and complete more than 800 successful projects. We believe that every job, big or small, deserves our full
-                                    attention and expertise.
-                                </motion.p>
-                                <motion.div
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    <Button
-                                        variant="outline-secondary"
-                                        className="mt-3"
-                                        style={{ borderColor: 'var(--secondary-color)', color: 'var(--secondary-color)' }}
-                                    >
-                                        Read Our Full Story
-                                    </Button>
-                                </motion.div>
-                            </motion.div>
-                        </Col>
-                        <Col lg={6} className="order-1 order-lg-2">
-                            <motion.div
-                                className="position-relative"
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6 }}
-                            >
-                                <motion.div 
-                                    className="bg-light rounded-4 p-3 shadow-sm" 
-                                    style={{ position: 'absolute', top: '20px', right: '-20px', width: '80%' }}
-                                    initial={{ x: 50, opacity: 0 }}
-                                    whileInView={{ x: 0, opacity: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.6, delay: 0.3 }}
-                                >
-                                    <img src={work1} alt="Office" className="rounded w-100" style={{ objectFit: 'cover', aspectRatio: '16/9' }} />
-                                </motion.div>
-                                <motion.img
-                                    src={teamMember1}
-                                    alt="Company History"
-                                    className="img-fluid rounded shadow-lg w-100"
-                                    style={{ objectFit: 'cover', height: '400px' }}
-                                    whileHover={{ scale: 1.02 }}
-                                    transition={{ duration: 0.4 }}
-                                />
-                            </motion.div>
-                        </Col>
-                    </Row>
-                </Container>
-            </section>
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 100,
+      damping: 10,
+    },
+  },
+};
 
-            {/* Meet the Team Section */}
-            <section className="py-5 bg-light">
-                <Container>
-                    <div className="text-center mb-5">
-                        <motion.h2 
-                            className="fw-bold text-secondary-custom"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
-                        >
-                            Meet the Team
-                        </motion.h2>
-                        <motion.p 
-                            className="text-muted"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.1 }}
-                        >
-                            The experienced professionals behind our success.
-                        </motion.p>
-                    </div>
-
-                    <motion.div 
-                        className="row g-4"
-                        variants={staggerContainer}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                    >
-                        {[
-                            { name: "John Smith", role: "Founder & CEO", img: teamMember1 },
-                            { name: "Sarah Johnson", role: "Project Manager", img: teamMember2 },
-                            { name: "Michael Chen", role: "Lead Engineer", img: teamMember3 },
-                            { name: "Emily Davis", role: "Customer Success", img: teamMember1 }
-                        ].map((member, index) => (
-                            <div className="col-md-6 col-lg-3" key={index}>
-                                <motion.div variants={fadeInUp}>
-                                    <Card 
-                                        className="h-100 border-0 shadow-sm text-center hover-shadow"
-                                        whileHover={{ 
-                                            scale: 1.03, 
-                                            y: -10,
-                                            boxShadow: "0 1rem 2rem rgba(0,0,0,0.15)"
-                                        }}
-                                        transition={{ type: "spring", stiffness: 300 }}
-                                    >
-                                        <div className="position-relative overflow-hidden rounded-top" style={{ height: '200px' }}>
-                                            <motion.div
-                                                whileHover={{ scale: 1.1 }}
-                                                transition={{ duration: 0.4 }}
-                                            >
-                                                <Card.Img
-                                                    variant="top"
-                                                    src={member.img}
-                                                    className="object-fit-cover w-100 h-100"
-                                                />
-                                            </motion.div>
-                                            <div className="position-absolute top-50 start-50 translate-middle">
-                                                <motion.div 
-                                                    className="bg-primary-custom rounded-circle p-2 shadow text-white"
-                                                    whileHover={{ scale: 1.2, rotate: 10 }}
-                                                >
-                                                    <FaUser className="fs-4" />
-                                                </motion.div>
-                                            </div>
-                                        </div>
-                                        <Card.Body>
-                                            <Card.Title className="fw-bold text-secondary-custom">{member.name}</Card.Title>
-                                            <Card.Subtitle className="mb-3 text-primary-custom fw-medium">{member.role}</Card.Subtitle>
-                                            <Card.Text className="text-muted small">
-                                                Expert in their field with over 10 years of hands-on experience in the industry.
-                                            </Card.Text>
-                                            <motion.div
-                                                whileHover={{ scale: 1.05 }}
-                                                whileTap={{ scale: 0.95 }}
-                                            >
-                                                <Button variant="outline-secondary" size="sm" className="rounded-pill">
-                                                    Contact Profile
-                                                </Button>
-                                            </motion.div>
-                                        </Card.Body>
-                                    </Card>
-                                </motion.div>
-                            </div>
-                        ))}
-                    </motion.div>
-                </Container>
-            </section>
-
-            {/* Past Works Gallery */}
-            <section className="py-5 bg-white">
-                <Container>
-                    <div className="text-center mb-5">
-                        <motion.h2 
-                            className="fw-bold text-secondary-custom"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
-                        >
-                            Our Masterpieces
-                        </motion.h2>
-                        <motion.p 
-                            className="text-muted"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.1 }}
-                        >
-                            Showcasing some of our most recent and challenging projects.
-                        </motion.p>
-                    </div>
-
-                    <div className="row g-4">
-                        {[work1, work2, work3].map((img, index) => (
-                            <div className="col-md-6 col-lg-4" key={index}>
-                                <motion.div
-                                    initial={{ opacity: 0, y: 50 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: index * 0.15 }}
-                                >
-                                    <Card 
-                                        className="border-0 shadow-sm h-100 overflow-hidden"
-                                        whileHover={{ 
-                                            scale: 1.02,
-                                            y: -5,
-                                            boxShadow: "0 1rem 2rem rgba(0,0,0,0.2)"
-                                        }}
-                                        transition={{ type: "spring", stiffness: 300 }}
-                                    >
-                                        <div className="ratio ratio-16x9 position-relative">
-                                            <motion.div
-                                                whileHover={{ scale: 1.1 }}
-                                                transition={{ duration: 0.4 }}
-                                            >
-                                                <Card.Img
-                                                    variant="top"
-                                                    src={img}
-                                                    className="object-fit-cover w-100 h-100"
-                                                />
-                                            </motion.div>
-                                            <div className="position-absolute bottom-0 start-0 w-100 bg-gradient-to-t from-secondary-custom to-transparent p-4 text-white">
-                                                <h5 className="fw-bold mb-1">Project #{index + 101}</h5>
-                                                <p className="mb-0 small">Commercial Renovation • 2023</p>
-                                            </div>
-                                        </div>
-                                        <Card.Body>
-                                            <div className="d-flex justify-content-between align-items-center">
-                                                <span className="badge bg-primary-custom text-white">Completed</span>
-                                                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                                    <Button variant="outline-primary" size="sm">
-                                                        View Project
-                                                    </Button>
-                                                </motion.div>
-                                            </div>
-                                        </Card.Body>
-                                    </Card>
-                                </motion.div>
-                            </div>
-                        ))}
-                        {/* Extra card for grid balance */}
-                        <div className="col-md-6 col-lg-4">
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: 0.4 }}
-                            >
-                                <Card 
-                                    className="border-0 shadow-sm h-100 bg-light d-flex flex-column align-items-center justify-content-center text-center p-5"
-                                    whileHover={{ scale: 1.02 }}
-                                >
-                                    <motion.h3 
-                                        className="text-secondary-custom fw-bold"
-                                        whileHover={{ scale: 1.1 }}
-                                    >
-                                        +250
-                                    </motion.h3>
-                                    <p className="text-muted">Projects Completed</p>
-                                    <motion.div
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                    >
-                                        <Button variant="outline-secondary" className="mt-3">
-                                            See All Portfolio
-                                        </Button>
-                                    </motion.div>
-                                </Card>
-                            </motion.div>
-                        </div>
-                    </div>
-                </Container>
-            </section>
+export default function About() {
+  return (
+    <div className="pt-20">
+      {/* Header Section */}
+      <section className="section-padding bg-gradient-to-r from-secondary to-[#1b4f72] text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <motion.div
+            animate={{ y: [0, -20, 0] }}
+            transition={{ duration: 8, repeat: Infinity }}
+            className="absolute top-10 right-10 text-6xl"
+          >
+            🏢
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 20, 0] }}
+            transition={{ duration: 10, repeat: Infinity }}
+            className="absolute bottom-10 left-10 text-6xl"
+          >
+            ⚙️
+          </motion.div>
         </div>
-    );
-}
+        <div className="container-custom text-center relative z-10">
+          <motion.h1
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: 'spring', stiffness: 80 }}
+            className="text-4xl md:text-5xl font-bold mb-4"
+          >
+            About ZAIN
+          </motion.h1>
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: 120 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="h-1 bg-primary rounded mx-auto mb-4"
+          ></motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-xl text-gray-300 max-w-2xl mx-auto"
+          >
+            Your trusted partner for professional technical services in Oman since 1998.
+            Building excellence one project at a time.
+          </motion.p>
+        </div>
+      </section>
 
-export default About;
+      {/* Company History */}
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ type: 'spring', stiffness: 80 }}
+            >
+              <motion.h2
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="text-3xl md:text-4xl font-bold text-secondary mb-4"
+              >
+                Our Journey Since 1998
+              </motion.h2>
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: 96 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+                className="w-24 h-1 bg-primary rounded mb-6"
+              ></motion.div>
+              <p className="text-gray-600 text-lg mb-4 leading-relaxed">
+                Founded in a small garage with two tools and a dream, our company has grown into a trusted name in the industry.
+                What started as a small family operation has evolved into a comprehensive service provider serving thousands of clients.
+              </p>
+              <p className="text-gray-600 text-lg mb-4 leading-relaxed">
+                We started by focusing on residential repairs and quickly expanded our expertise to commercial projects. Our commitment 
+                to quality, safety, and customer satisfaction has allowed us to serve over 1,500 happy clients and complete more than 
+                800 successful projects.
+              </p>
+              <p className="text-gray-600 text-lg mb-6 leading-relaxed">
+                We believe that every job, big or small, deserves our full attention and expertise. This philosophy has made us the 
+                preferred choice for thousands of families and businesses.
+              </p>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="btn-primary-custom inline-flex items-center gap-2"
+              >
+                Read Our Full Story <FiArrowRight />
+              </motion.button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ type: 'spring', stiffness: 80 }}
+              className="relative"
+            >
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                className="bg-gray-100 rounded-2xl p-4 shadow-xl"
+              >
+                <div className="w-full h-80 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl flex items-center justify-center">
+                  <div className="text-center">
+                    <FiBriefcase className="text-gray-400 text-6xl mx-auto mb-4" />
+                    <span className="text-gray-400 text-lg">Company History Image</span>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline */}
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: 96 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="h-1 bg-primary rounded mx-auto mb-4"
+            ></motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">Our Journey</h2>
+            <p className="text-gray-600">Key milestones in our growth and development.</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {milestones.map((milestone, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 }}
+                whileHover={{ scale: 1.05, y: -10 }}
+                className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-all border-l-4 border-primary"
+              >
+                <motion.div
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
+                  className="text-3xl font-bold text-primary mb-3"
+                >
+                  {milestone.year}
+                </motion.div>
+                <h3 className="font-bold text-lg text-secondary mb-2">{milestone.title}</h3>
+                <p className="text-gray-600 text-sm">{milestone.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Mission & Vision */}
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
+              className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-8 shadow-lg border-l-4 border-primary"
+            >
+              <motion.div
+                animate={{ rotate: [0, 5, 0] }}
+                transition={{ duration: 3, repeat: Infinity }}
+                className="inline-block mb-4"
+              >
+                <FiTarget className="text-primary text-4xl" />
+              </motion.div>
+              <h3 className="text-2xl font-bold text-secondary mb-4">Our Mission</h3>
+              <p className="text-gray-600 leading-relaxed">
+                To deliver exceptional technical services that exceed customer expectations while maintaining the highest
+                standards of safety, quality, and professionalism. We strive to be the most trusted name in the industry,
+                creating lasting relationships built on reliability and excellence.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ scale: 1.02 }}
+              className="bg-gradient-to-br from-secondary/10 to-secondary/5 rounded-2xl p-8 shadow-lg border-l-4 border-secondary"
+            >
+              <motion.div
+                animate={{ rotate: [0, -5, 0] }}
+                transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+                className="inline-block mb-4"
+              >
+                <FiLayers className="text-secondary text-4xl" />
+              </motion.div>
+              <h3 className="text-2xl font-bold text-secondary mb-4">Our Vision</h3>
+              <p className="text-gray-600 leading-relaxed">
+                To be the leading provider of integrated technical services in the region, recognized for our
+                innovation, reliability, and commitment to sustainable development. We envision a future where
+                our services make a positive impact on every community we serve.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Values */}
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: 96 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="h-1 bg-primary rounded mx-auto mb-4"
+            ></motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">Our Core Values</h2>
+            <p className="text-gray-600">The principles that guide everything we do.</p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
+            {[
+              { icon: FiCheckCircle, title: 'Integrity', desc: 'We conduct our business with honesty and transparency in all dealings.' },
+              { icon: FiAward, title: 'Excellence', desc: 'We strive for the highest quality in every aspect of our work.' },
+              { icon: FiArrowRight, title: 'Safety', desc: 'We prioritize the wellbeing of our team, clients, and communities.' },
+              { icon: FiTarget, title: 'Innovation', desc: 'We embrace new technologies and continuously improve our methods.' },
+            ].map((value, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ scale: 1.05, y: -10 }}
+                className="bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-lg transition-all"
+              >
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
+                  className="inline-block mb-3"
+                >
+                  <value.icon className="text-primary text-4xl" />
+                </motion.div>
+                <h3 className="font-bold text-lg text-secondary mb-2">{value.title}</h3>
+                <p className="text-gray-600 text-sm">{value.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Meet the Team */}
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: 96 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="h-1 bg-primary rounded mx-auto mb-4"
+            ></motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">Meet the Team</h2>
+            <p className="text-gray-600">The experienced professionals behind our success.</p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
+            {team.map((member, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ scale: 1.05, y: -10 }}
+                className="bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group"
+              >
+                <motion.div
+                  animate={{ backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'] }}
+                  transition={{ duration: 6, repeat: Infinity }}
+                  className="h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:bg-primary/10 transition-all"
+                >
+                  <FiUser className="text-gray-400 text-6xl group-hover:text-primary transition-colors" />
+                </motion.div>
+                <div className="p-4 text-center">
+                  <h3 className="font-bold text-lg text-secondary">{member.name}</h3>
+                  <p className="text-primary font-medium mb-2">{member.role}</p>
+                  <p className="text-gray-600 text-sm">{member.experience}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Stats Banner */}
+      <section className="section-padding bg-gradient-to-r from-secondary to-[#1b4f72] text-white">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
+          >
+            {[
+              { number: '800+', label: 'Projects Completed' },
+              { number: '1,500+', label: 'Happy Clients' },
+              { number: '50+', label: 'Team Members' },
+              { number: '25+', label: 'Years Experience' },
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <h3 className="text-4xl md:text-5xl font-bold text-primary mb-2">{stat.number}</h3>
+                <p className="text-gray-300">{stat.label}</p>
+              </motion.div>
+            ))}
+            </motion.div>
+          </div>
+      </section>
+    </div>
+  );
+}
